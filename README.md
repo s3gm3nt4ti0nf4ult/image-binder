@@ -1,5 +1,5 @@
 # image-binder
-This easy script binds multiple images into one. 
+This easy script merges multiple images into one. 
 Usage:
 python bind.py box_size(x)xbox_size(y) inputfile1, inputfile2, ...
 
