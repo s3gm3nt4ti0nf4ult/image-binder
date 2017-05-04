@@ -9,4 +9,4 @@ Where box_size(x) is a number of columns and box_size(y) is a number of rows. So
 
 
 TODO:
--[ ] fill blank with defined colour
+- [ ] fill blank with defined colour
