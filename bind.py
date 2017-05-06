@@ -26,12 +26,19 @@ def img_sizer(img_list):
     '''searches the biggest image'''
     x_s, y_s = 0, 0
     for i in img_list:
-        image = Image.open(i)
-        image_x_s, image_y_s = image.size
-        if image_x_s > x_s:
-            x_s = image_x_s
-        if image_y_s > y_s:
-            y_s = image_y_s
+        try:
+            image = Image.open(i)
+            image_x_s, image_y_s = image.size
+            if image_x_s > x_s:
+                x_s = image_x_s
+            if image_y_s > y_s:
+                y_s = image_y_s
+        except FileNotFoundError:
+            print('Cannot open file {}, exiting!'.format(i))
+            sys.exit(1)
+    if x_s == 0 or y_s == 0:
+        print('Size error, biggest image is 0x0 ppi!, exiting!')
+        sys.exit(1)
     print("Largest image size {} px x {} px\n".format(x_s, y_s))
 
     return x_s, y_s 
@@ -49,8 +56,8 @@ def resize(img_list, x, y):
                 img.save(i)
             else:
                 pass
-        except:
-            print('Error while processing {}'.format(i))
+        except (FileNotFoundError, IOError, ValueError) as error:
+            print('Error while processing {}\nOccured:{}'.format(i, error))
 
 
 
@@ -103,8 +110,8 @@ def main(argv):
     parser.add_argument('-o', '--output', metavar='output_img.tiff', required=True, type=str, help='Output image')
     arguments = parser.parse_args()
 
-    blok_size_x = arguments.sx
-    blok_size_y = arguments.sy
+    blok_size_x = arguments.sizex
+    blok_size_y = arguments.sizey
     input_images = arguments.input
     output_name = arguments.output
 
