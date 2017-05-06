@@ -7,22 +7,6 @@
 import sys
 import argparse
 from PIL import Image
-#def check_box_size(l):
-#    if len(l) == 1:
-#        try:
-#            x = int(l)
-#            return x, 1
-#        except:
-#            sys.exit("Size argument error\n")
-#    else:
-#        l = l.split('x')
-#        try:
-#            x = int(l[0])
-#            y = int(l[1])
-#            return x, y
-#        except:
-#            sys.exit("Size argument error\n")
-
 
 
 def img_sizer(img_list):
@@ -119,7 +103,7 @@ def main(argv):
                         type=int, help='Vertical images number')
 
     parser.add_argument('-i', '--input', metavar='img1, img2...',
-                        required=True, type=str, nargs='?', help='Input images to be binded')
+                        required=True, type=str, nargs='+', help='Input images to be binded')
 
     parser.add_argument('-o', '--output', metavar='output_img.tiff',
                         required=True, type=str, help='Output image')
@@ -135,10 +119,15 @@ def main(argv):
     output_name = arguments.output
     opt = arguments.optimize
 
-    if output_name[:-4] != '.tiff' or output_name[:-4] != '.tif':
+    if (output_name.split('.')[-1].lower() != 'tiff' and
+            output_name.split('.')[-1].lower() != 'tif'):
         output_name += '.tif'
+
     max_ppi_x, max_ppi_y = img_sizer(input_images)
     output_image = make_image(blok_size_x, blok_size_y, max_ppi_x, max_ppi_y, input_images)
+
+
+    print('Saving as {} with optimization set to: {}'.format(output_name, opt))
     output_image.save(output_name, optimize=opt)
 
 
