@@ -1,5 +1,5 @@
 # image-binder
-This easy script merges multiple images into one. For example 2x1 box or 4x4 etc...
+This script merges multiple images into one image. For example 2x1 box or 4x4 etc...
 
 
 
@@ -32,8 +32,7 @@ optional arguments:
                         Input images to be binded
   -o output_img.tiff, --output output_img.tiff
                         Output image
-  -opt True, --optimize True
-                        Saved file optimization
+  -opt, --optimize      Saved file optimization
 
 Bye!
 
@@ -45,7 +44,12 @@ Bye!
 
 I wanted to make it 100% 10/10 rated in pylint :).
 
+
+Feel free to contribute. 
+
+
 ### TODO:
 - [x] Argparse argument parsing
 - [ ] filling blank places (for example 3 image box) with predefined color
+- [ ] specifing size of output image in px
 - [ ] TBD

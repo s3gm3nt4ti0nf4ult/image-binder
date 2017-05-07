@@ -4,6 +4,9 @@
     for example data charts or diagrams, side by side into single image
 '''
 
+__author__ = 's3gm3nt4ti0nf4ult'
+__licence__ = 'MIT'
+
 import sys
 import argparse
 from PIL import Image
@@ -95,22 +98,16 @@ def main(argv):
 
     parser = argparse.ArgumentParser(prog=argv[0], add_help=True,
                                      description=hello(), epilog='Bye!')
-
     parser.add_argument('-sx', '--sizex', metavar='N', required=True,
                         type=int, help='Horizontal images number')
-
     parser.add_argument('-sy', '--sizey', metavar='M', required=True,
                         type=int, help='Vertical images number')
-
     parser.add_argument('-i', '--input', metavar='img1, img2...',
                         required=True, type=str, nargs='+', help='Input images to be binded')
-
     parser.add_argument('-o', '--output', metavar='output_img.tiff',
                         required=True, type=str, help='Output image')
-
-    parser.add_argument('-opt', '--optimize', metavar='True', default=True,
-                        required=False, type=bool, help='Saved file optimization')
-
+    parser.add_argument('-opt', '--optimize', required=False, action='store_true',
+                        help='Saved file optimization')
     arguments = parser.parse_args()
 
     blok_size_x = arguments.sizex
