@@ -106,15 +106,15 @@ def main(argv):
                         required=True, type=str, nargs='+', help='Input images to be binded')
     parser.add_argument('-o', '--output', metavar='output_img.tiff',
                         required=True, type=str, help='Output image')
-    parser.add_argument('-opt', '--optimize', required=False, action='store_true',
-                        help='Saved file optimization')
+    parser.add_argument('-dopt', '--doptimize', required=False, action='store_true',
+                        help='Disables saved file optimization')
     arguments = parser.parse_args()
 
     blok_size_x = arguments.sizex
     blok_size_y = arguments.sizey
     input_images = arguments.input
     output_name = arguments.output
-    opt = arguments.optimize
+    opt = arguments.doptimize
 
     if (output_name.split('.')[-1].lower() != 'tiff' and
             output_name.split('.')[-1].lower() != 'tif'):

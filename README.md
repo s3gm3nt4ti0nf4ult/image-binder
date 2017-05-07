@@ -31,7 +31,7 @@ optional arguments:
                         Input images to be binded
   -o output_img.tiff, --output output_img.tiff
                         Output image
-  -opt, --optimize      Saved file optimization
+  -dopt, --doptimize    Disables saved file optimization
 
 
 Bye!
@@ -40,7 +40,7 @@ Bye!
 
 `-sx` and `-sy` specifies the size of output 'image box'. For example `-sx 2 -sy 2` means that your output image will contain 4 images and have size of 2 images vertically and 2 images horizontally.
 
-`-opt` or `-optimize` enables `optimize` flag in PIL, so the size of ouput image will be reduced. 
+`-dopt` or `-doptimize` enables `optimize=False` flag in PIL, so the size of ouput image will NOT be reduced. Default option, stores true, so image will be optimized.
 
 I wanted to make it 100% 10/10 rated in pylint :).
 
