@@ -11,8 +11,7 @@ To get help just type:
 
 Commands:
 ```
-
-python bind.py bind.py -h
+python bind.py -h
 
      _                                  _     _           _
     (_)_ __ ___   __ _  __ _  ___      | |__ (_)_ __   __| | ___ _ __
@@ -33,6 +32,7 @@ optional arguments:
   -o output_img.tiff, --output output_img.tiff
                         Output image
   -opt, --optimize      Saved file optimization
+
 
 Bye!
 
