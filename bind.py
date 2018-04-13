@@ -78,6 +78,11 @@ def make_image(box_x, box_y, ppi_x, ppi_y, images):
     return result
 
 
+def blog(imgs):
+    for i in imgs:
+        resize(i, 600, 600)
+
+
 
 
 def hello():
@@ -98,9 +103,9 @@ def main(argv):
 
     parser = argparse.ArgumentParser(prog=argv[0], add_help=True,
                                      description=hello(), epilog='Bye!')
-    parser.add_argument('-sx', '--sizex', metavar='N', required=True,
+    parser.add_argument('-sx', '--sizex', metavar='N', required=False,
                         type=int, help='Horizontal images number')
-    parser.add_argument('-sy', '--sizey', metavar='M', required=True,
+    parser.add_argument('-sy', '--sizey', metavar='M', required=False,
                         type=int, help='Vertical images number')
     parser.add_argument('-i', '--input', metavar='img1, img2...',
                         required=True, type=str, nargs='+', help='Input images to be binded')
@@ -108,13 +113,20 @@ def main(argv):
                         required=True, type=str, help='Output image')
     parser.add_argument('-dopt', '--doptimize', required=False, action='store_true',
                         help='Disables saved file optimization')
+    parser.add_argument('-b', '--blog', required=False,  action='store_true',
+                        help='Resizes to my blog width')
     arguments = parser.parse_args()
+    
+    if not arguments.blog:
+        blok_size_x = arguments.sizex
+        blok_size_y = arguments.sizey
+        input_images = arguments.input
+        output_name = arguments.output
+        opt = arguments.doptimize
 
-    blok_size_x = arguments.sizex
-    blok_size_y = arguments.sizey
-    input_images = arguments.input
-    output_name = arguments.output
-    opt = arguments.doptimize
+    else:
+        input_images = arguments.input
+        blog(input_images)
 
     if (output_name.split('.')[-1].lower() != 'tiff' and
             output_name.split('.')[-1].lower() != 'tif'):
